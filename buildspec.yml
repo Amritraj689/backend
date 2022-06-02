@@ -1,7 +1,7 @@
 version: 0.2
 env:
   parameter-store:
-    MONGODB_URL: "/amrit/mongo_url"
+    MONGODB_URL: "/amrit/MONGODB_URL"
 phases:
   pre_build:
     commands:
