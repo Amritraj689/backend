@@ -1,0 +1,15 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /mnt/backend
+file_exists_behavior: OVERWRITE
+hooks:
+  ApplicationRestart:
+    - location: scripts/deploy.sh
+      timeout: 300
+      runas: root
+  ValidateService:
+    - location: scripts/validate_service.sh
+      timeout: 300
+      runas: root
