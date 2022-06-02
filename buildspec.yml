@@ -14,6 +14,7 @@ phases:
       - npm run-script build
   post_build:
     commands:
+      - echo "$MONGODB_URL" > dist/.env
       - echo Build completed on `date`
 # Include only the files required for your application to run.
 artifacts:
