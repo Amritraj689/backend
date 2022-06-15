@@ -1,22 +1,31 @@
 version: 0.2
+
+run-as: root
+
 env:
   parameter-store:
-    MONGODB_URL: "/amrit/MONGODB_URL"
+    MongoDb_url: "amrit/MONOGODB_URL"
+
 phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+    commands:
+      - echo Installing...
   pre_build:
     commands:
-      - echo Installing source NPM dependencies...
+      - echo Installing source NPM dependencies.
       - npm install
   build:
     commands:
-      - echo Build started on `date`
-      - echo Compiling the dist folder
-      - npm build
+      - sed -i "s|localhost|"$MongoDb_url"|" app.js
+      - echo Building ...
+
   post_build:
     commands:
-      - echo "$MONGODB_URL" > dist/.env
-      - echo Build completed on `date`
-# Include only the files required for your application to run.
+      - echo Build complete
+
 artifacts:
   files:
     - '**/*'
+    - echo Uploaded Artifacts
