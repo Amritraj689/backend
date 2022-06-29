@@ -2,9 +2,6 @@ version: 0.2
 
 run-as: root
 
-env:
-  parameter-store:
-    MongoDb_url: "/amrit/MONGODB_URL"
 
 phases:
   install:
